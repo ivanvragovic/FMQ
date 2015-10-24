@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FMQ</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/fmq.css">
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/papaparse.js"></script>
+		<script src="js/jquery.dataTables.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/fmq.js"></script>
+	</head>
+	<body>
+		
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title main-title">Founder's Map Quest</h4>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" data-target="#collapse-input-data">
+					<h4 class="panel-title">Input Data</h4>
+				</div>
+				<div class="panel-collapse collapse in" id="collapse-input-data">
+					<div class="panel-body">
+						<div>
+							<div class="data-container panel-subheading">CSV of startups</div>
+							<div class="data-container">
+								<span>Input text or select file</span>
+								<input type="file" onchange="onFileSelected(event)" accept=".csv">
+							</div>
+							<div class="data-container">
+								<span>Separator:</span>
+								<select id="separator-select">
+									<option value=",">comma (,)</option>
+									<option value=";">semicolon (;)</option>
+									<option value="tab">tab</option>
+								</select>
+							</div>
+							<div class="data-container">
+								<textarea id="ta-input-CSV" class="textarea-input" rows="5"></textarea>
+							</div>
+							<div class="data-container">
+								<button type="button" onclick="parseButtonClick()">Parse</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" data-target="#collapse-view-table">
+					<h4 class="panel-title">View Table</h4>
+				</div>
+				<div class="panel-collapse collapse" id="collapse-view-table">
+					<div class="panel-body">
+						<div id="startupsTableWrapper"></div>
+						<div class="show-map-button">
+							<button type="button" onclick="showMapButtonClick()">Show Map</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" data-target="#collapse-view-map">
+					<h4 class="panel-title">View Map</h4>
+				</div>
+				<div class="panel-collapse collapse" id="collapse-view-map">
+					<div class="panel-body">
+						<div class="map-class" id="map"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		
+		
+		
+	</body>
+</html>
