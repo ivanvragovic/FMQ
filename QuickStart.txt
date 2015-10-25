@@ -1,0 +1,7 @@
+Quick Start Guide for FMQ
+
+1. Input CSV data into textarea.
+2. Click Parse button
+3. In footer of the table select marker, longitute and latitude for appropriate columns.
+4. Click Show Map button
+5. If needed return to previous steps by clicking on step label (Input Data or View Table)

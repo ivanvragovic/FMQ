@@ -106,10 +106,12 @@ var reinitTable = false;
 
 function parseButtonClick() {
 	parseCSV();
-	$('#collapse-input-data').collapse('hide');
-	$('#collapse-view-map').collapse('hide');
-	$('#collapse-view-table').collapse('show');
-	initTable();
+	if (parsedCSV) {
+		$('#collapse-input-data').collapse('hide');
+		$('#collapse-view-map').collapse('hide');
+		$('#collapse-view-table').collapse('show');
+		initTable();
+	}	
 }
 
 function showMapButtonClick() {
@@ -117,10 +119,13 @@ function showMapButtonClick() {
 	$('#collapse-view-table').collapse('hide');
 	$('#collapse-view-map').collapse('show');
 }
-
+var parsedCSV;
 function parseCSV() {
 	var separator = $('#separator-select').val().replace('tab', '\t');
-	var inputCSV = $('#ta-input-CSV').val();
+	var inputCSV = $('#ta-input-CSV').val().trim();
+	if (!inputCSV) {
+		return;
+	}
 	var parserConfig = {delimiter: separator};
 	parsedCSV = Papa.parse(inputCSV, parserConfig);
 	reinitTable = true;
@@ -239,10 +244,10 @@ function isURI(str) {
 function onFileSelected(event) {
 	var selectedFile = event.target.files[0];
 	var reader = new FileReader();
-	var result = document.getElementById("ta-input-CSV");
+	var inputTextArea = document.getElementById("ta-input-CSV");
 
 	reader.onload = function(event) {
-		result.innerHTML = event.target.result;
+		inputTextArea.value = event.target.result;
 	};
 	reader.readAsText(selectedFile);
 }
